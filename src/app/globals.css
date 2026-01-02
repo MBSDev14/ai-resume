@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* placeholder for light mode */
+  --placeholder: #6b7280;
 }
 
 @theme inline {
@@ -15,7 +17,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    /* darker foreground for dark mode (less bright than #ededed) */
+    --foreground: #bfc7cf;
+    /* placeholder color variable for dark mode */
+    --placeholder: #9aa3ab;
   }
 }
 
@@ -24,3 +29,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Apply placeholder color across inputs/textareas */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: var(--placeholder, currentColor) !important;
+  opacity: 1;
+}
+
+/* Ensure form controls use consistent text color so placeholder contrast works */
+input, textarea, select {
+  color: var(--foreground);
+}
+
+
+/* Fallback hex definitions for Tailwind teal/cyan utilities to avoid lab() parsing errors */
+/* These override CSS variables and utility classes used by the Colorful template. */
+:root {
+  --tw-teal-50: #f0fdfa;
+  --tw-teal-100: #ccfbf1;
+  --tw-teal-200: #99f6e4;
+  --tw-teal-300: #5eead4;
+  --tw-teal-400: #2dd4bf;
+  --tw-teal-500: #14b8a6;
+  --tw-teal-600: #0d9488;
+  --tw-teal-700: #0f766e;
+  --tw-teal-800: #115e59;
+
+  --tw-cyan-50: #ecfeff;
+  --tw-cyan-100: #cffafe;
+  --tw-cyan-200: #a5f3fc;
+  --tw-cyan-300: #67e8f9;
+  --tw-cyan-400: #22d3ee;
+  --tw-cyan-500: #06b6d4;
+  --tw-cyan-600: #0891b2;
+  --tw-cyan-700: #0e7490;
+  --tw-cyan-800: #155e75;
+}
+
+/* Gradient variable fallbacks used by Tailwind's gradient utilities */
+.from-teal-50 { --tw-gradient-from: var(--tw-teal-50) !important; }
+.from-teal-100 { --tw-gradient-from: var(--tw-teal-100) !important; }
+.from-teal-500 { --tw-gradient-from: var(--tw-teal-500) !important; }
+.to-teal-50   { --tw-gradient-to: var(--tw-teal-50) !important; }
+.to-teal-100  { --tw-gradient-to: var(--tw-teal-100) !important; }
+.to-cyan-50   { --tw-gradient-to: var(--tw-cyan-50) !important; }
+.to-cyan-100  { --tw-gradient-to: var(--tw-cyan-100) !important; }
+.to-cyan-600  { --tw-gradient-to: var(--tw-cyan-600) !important; }
+.from-cyan-100 { --tw-gradient-from: var(--tw-cyan-100) !important; }
+
+/* Direct color/border fallbacks for utility classes used in templates */
+.text-teal-600 { color: var(--tw-teal-600) !important; }
+.text-teal-700 { color: var(--tw-teal-700) !important; }
+.text-teal-800 { color: var(--tw-teal-800) !important; }
+.text-cyan-600 { color: var(--tw-cyan-600) !important; }
+.border-teal-100 { border-color: var(--tw-teal-100) !important; }
+.border-teal-200 { border-color: var(--tw-teal-200) !important; }
+.border-teal-300 { border-color: var(--tw-teal-300) !important; }
+.bg-white { background-color: #ffffff !important; }
